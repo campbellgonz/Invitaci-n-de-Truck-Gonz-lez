@@ -26,41 +26,56 @@
             overflow-x: hidden;
         }
 
-        /* ADORNOS FLOTANTES - TAMAÑO AJUSTADO */
-.adornos img {
-    position: absolute;
-    width: 90px;   /* Antes 160px */
-    z-index: 5;
-    pointer-events: none;
-}
+        /* ❄ NIEVE: SIEMPRE ARRIBA */
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999999 !important;
+        }
 
-/* Tablet */
-@media (max-width: 1024px) {
-    .adornos img {
-        width: 75px;
-    }
-}
+        /* Pantalla de bienvenida */
+        .welcome-screen {
+            height: 100vh;
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1000;
+        }
 
-/* Celular */
-@media (max-width: 768px) {
-    .adornos img {
-        display: none !important;
-    }
-}
+        .welcome-screen button {
+            background: #27656e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
-
-        /* Contenedor principal oculto hasta entrar */
+        /* Contenido principal */
         .container {
             display: none;
             margin: 20px auto;
             max-width: 900px;
             padding: 15px;
+            position: relative;
+            z-index: 10;
         }
 
         /* Secciones zigzag */
         .zigzag-section {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin: 25px 0;
             gap: 25px;
@@ -81,16 +96,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             border-left: 5px solid #27656e;
             border-right: 5px solid #27656e;
-            position: relative;
-        }
-
-        .decoracion-derecha {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 110px;
-            opacity: 0.9;
-            pointer-events: none;
         }
 
         .zigzag-card h2 {
@@ -100,23 +105,6 @@
             margin-bottom: 10px;
         }
 
-        /* Pantallas pequeñas */
-        @media (max-width: 768px) {
-            .zigzag-section {
-                flex-direction: column !important;
-                text-align: center;
-            }
-            .zigzag-card {
-                width: 100%;
-            }
-            .decoracion-derecha {
-                width: 80px;
-                top: -15px;
-                right: -10px;
-            }
-        }
-
-        /* Pantallas muy pequeñas */
         @media (max-width: 480px) {
             .zigzag-card h2 {
                 font-size: 26px;
@@ -124,29 +112,6 @@
             .zigzag-card p {
                 font-size: 16px;
             }
-        }
-
-        /* Fondo de bienvenida */
-        .welcome-screen {
-            height: 100vh;
-            background-color: rgba(0,0,0,0.8);
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .welcome-screen button {
-            background: #27656e;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 18px;
-            border-radius: 10px;
-            cursor: pointer;
         }
 
         footer {
@@ -160,22 +125,17 @@
 </head>
 <body>
 
-<!-- Adornos flotando -->
-<div class="adornos">
-    <img src="christmas-ornament-clip-art-blue-christmas-hanging-ball-png-clipart-image-ad691a2adecc631ac62aeca7b43e768b.png" class="adorno-1">
-    <img src="—Pngtree—isolated blue christmas ball with_5696616.png" class="adorno-2">
-    <img src="[CITYPNG.COM]Download Blue Burning Christmas Candles PNG - 2500x2500.png" class="adorno-3">
-    <img src="—Pngtree—blue christmas tree decoration with_18165299 (1).png" class="adorno-4">
-</div>
+<!-- ❄ NIEVE ARRIBA DE TODO -->
+<canvas id="snowCanvas"></canvas>
 
-<!-- Bienvenida -->
+<!-- Pantalla de bienvenida -->
 <div class="welcome-screen" id="welcomeScreen">
     <p>¡Bienvenido a la invitación de Truck González!</p>
     <p>Haz clic para comenzar y disfrutar de la música.</p>
     <button onclick="startInvitation()">Ingresar</button>
 </div>
 
-<!-- Contenido -->
+<!-- CONTENIDO -->
 <div class="container" id="invitationContent">
 
     <!-- TARJETA 1 -->
@@ -193,9 +153,7 @@
     <div class="zigzag-section">
         <div class="zigzag-card">
             <h2>⭐ Ubicación del Evento</h2>
-
             <img src="terreno.png" class="zigzag-img">
-
             <a href="https://maps.app.goo.gl/LKpmXthwqhiCzFbU7"
                target="_blank"
                style="display:inline-block; margin-top:15px; padding:12px 25px; background:#27656e; color:white; border-radius:20px; text-decoration:none;">
@@ -228,38 +186,66 @@ function startInvitation() {
     document.getElementById('invitationAudio').play();
 }
 </script>
-</script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script>
-setInterval(() => {
-  confetti({
-    particleCount: 100,
-    angle: 90,
-    spread: 50,        
-    startVelocity: 40,      
-    origin: { x: Math.random(), y: 0 },
-    shapes: ["circle"],
-    gravity:  0.8,
-    scalar: 0.6,
-    colors: ["#ffffff"]
-  });
-}, 200);
-</script>
 
-<!-- Adorno automático -->
+<!-- ❄ EFECTO DE NIEVE -->
 <script>
-window.onload = function() {
-    const decoracion = "klipartz.com (1).png";
-    document.querySelectorAll('.zigzag-card').forEach(card => {
-        let img = document.createElement("img");
-        img.src = decoracion;
-        img.className = "decoracion-derecha";
-        card.appendChild(img);
-    });
-};
+const canvas = document.getElementById('snowCanvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.onresize = resize;
+resize();
+
+let snowflakes = [];
+
+function createSnowflakes() {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const size = Math.random() * 3 + 1;
+    const speed = Math.random() * 1 + 0.5;
+    snowflakes.push({ x, y, size, speed });
+}
+
+function drawSnowflakes() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+
+    for (let flake of snowflakes) {
+        ctx.moveTo(flake.x, flake.y);
+        ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+    }
+
+    ctx.fill();
+    updateSnowflakes();
+}
+
+function updateSnowflakes() {
+    for (let flake of snowflakes) {
+        flake.y += flake.speed;
+        flake.x += Math.sin(flake.y * 0.01);
+
+        if (flake.y > canvas.height) {
+            flake.y = -flake.size;
+            flake.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+function snowing() {
+    createSnowflakes();
+    drawSnowflakes();
+    requestAnimationFrame(snowing);
+}
+
+snowing();
 </script>
 
 </body>
 </html>
 
             
+

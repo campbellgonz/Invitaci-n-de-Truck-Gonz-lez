@@ -26,6 +26,29 @@
             overflow-x: hidden;
         }
 
+        /* ADORNOS FLOTANTES - TAMAÑO AJUSTADO */
+.adornos img {
+    position: absolute;
+    width: 90px;   /* Antes 160px */
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .adornos img {
+        width: 75px;
+    }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+    .adornos img {
+        display: none !important;
+    }
+}
+
+
         /* Contenedor principal oculto hasta entrar */
         .container {
             display: none;
@@ -91,11 +114,6 @@
                 top: -15px;
                 right: -10px;
             }
-
-            /* Ajuste de adorno flotante */
-            .adornos img {
-                display: none !important;
-            }
         }
 
         /* Pantallas muy pequeñas */
@@ -143,7 +161,7 @@
 <body>
 
 <!-- Adornos flotando -->
-  <div class="adornos">
+<div class="adornos">
     <img src="christmas-ornament-clip-art-blue-christmas-hanging-ball-png-clipart-image-ad691a2adecc631ac62aeca7b43e768b.png" class="adorno-1">
     <img src="—Pngtree—isolated blue christmas ball with_5696616.png" class="adorno-2">
     <img src="[CITYPNG.COM]Download Blue Burning Christmas Candles PNG - 2500x2500.png" class="adorno-3">
@@ -210,6 +228,23 @@ function startInvitation() {
     document.getElementById('invitationAudio').play();
 }
 </script>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+setInterval(() => {
+  confetti({
+    particleCount: 100,
+    angle: 90,
+    spread: 50,        
+    startVelocity: 40,      
+    origin: { x: Math.random(), y: 0 },
+    shapes: ["circle"],
+    gravity:  0.8,
+    scalar: 0.6,
+    colors: ["#ffffff"]
+  });
+}, 200);
+</script>
 
 <!-- Adorno automático -->
 <script>
@@ -227,3 +262,4 @@ window.onload = function() {
 </body>
 </html>
 
+            

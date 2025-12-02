@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Truck González</title>
 
-    <!-- Google Fonts -->
+    <!-- ICONO DEL LINK -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
@@ -18,135 +22,132 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            background-attachment: fixed;
-            overflow-x: hidden;
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
         }
 
+        /* Contenedor principal oculto hasta entrar */
         .container {
             display: none;
-            margin: 50px auto;
+            margin: 20px auto;
             max-width: 900px;
-            padding: 20px;
+            padding: 15px;
         }
 
-        /* ---- ZIG ZAG TARJETAS ---- */
+        /* Secciones zigzag */
         .zigzag-section {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin: 30px 0;
-            gap: 20px;
+            align-items: center;
+            margin: 25px 0;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
-        .zigzag-section:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
         .zigzag-img {
-            width: 40%;
-            border-radius: 15px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
         }
 
         .zigzag-card {
-            width: 55%;
+            width: 100%;
             background: rgba(255,255,255,0.88);
-            border-radius: 15px;
             padding: 25px;
-            text-align: left;
-            border-left: 6px solid #27656e;
-            border-right: 6px solid #27656e;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            position: relative; /* NECESARIO PARA EL ADORNO */
+            border-left: 5px solid #27656e;
+            border-right: 5px solid #27656e;
+            position: relative;
         }
 
-        /* Adorno dentro de la tarjeta */
         .decoracion-derecha {
             position: absolute;
-            top: -25px;
-            right: -25px;
-            width: 120px;
-            pointer-events: none;
+            top: -20px;
+            right: -20px;
+            width: 110px;
             opacity: 0.9;
+            pointer-events: none;
         }
 
         .zigzag-card h2 {
-            color: #27656e;
             font-family: 'Dancing Script', cursive;
-            font-size: 30px;
+            font-size: 32px;
+            color: #27656e;
             margin-bottom: 10px;
         }
 
-        .zigzag-card p {
-            font-size: 18px;
-            line-height: 1.5;
-        }
-
-        /* Bienvenida */
-        .welcome-screen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 24px;
-            flex-direction: column;
-        }
-
-        .welcome-screen button {
-            padding: 12px 25px;
-            font-size: 18px;
-            background-color: #27656e;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #fff;
-            background-color: rgba(0,0,0,0.4);
-            padding: 10px;
-        }
-
-        /* Adornos generales */
-        .adornos img {
-            position: absolute;
-            width: 200px;
-        }
-
-        .adorno-1 { top: -100px; left: 10px; }
-        .adorno-2 { top: 0px; right: -5px; }
-        .adorno-3 { bottom: 0px; left: 40px; }
-        .adorno-4 { bottom: 10px; right: 40px; }
-
+        /* Pantallas pequeñas */
         @media (max-width: 768px) {
             .zigzag-section {
                 flex-direction: column !important;
                 text-align: center;
             }
-            .zigzag-img, .zigzag-card {
+            .zigzag-card {
                 width: 100%;
-                display: flex;
-                justify-content: flex-start;
+            }
+            .decoracion-derecha {
+                width: 80px;
+                top: -15px;
+                right: -10px;
+            }
+
+            /* Ajuste de adorno flotante */
+            .adornos img {
+                display: none !important;
             }
         }
-        
+
+        /* Pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .zigzag-card h2 {
+                font-size: 26px;
+            }
+            .zigzag-card p {
+                font-size: 16px;
+            }
+        }
+
+        /* Fondo de bienvenida */
+        .welcome-screen {
+            height: 100vh;
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .welcome-screen button {
+            background: #27656e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 35px;
+            padding: 10px;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
 
-<!-- Adornos flotantes -->
+<!-- Adornos flotando -->
 <div class="adornos">
-    <img src="christmas-ornament-clip-art-blue-christmas-hanging-ball-png-clipart-image-ad691a2adecc631ac62aeca7b43e768b.png" class="adorno-1">
-    <img src="—Pngtree—isolated blue christmas ball with_5696616.png" class="adorno-2">
-    <img src="[CITYPNG.COM]Download Blue Burning Christmas Candles PNG - 2500x2500.png" class="adorno-3">
-    <img src="—Pngtree—blue christmas tree decoration with_18165299 (1).png" class="adorno-4">
+    <img src="christmas-ball.png" class="adorno-1">
+    <img src="ball2.png" class="adorno-2">
+    <img src="candles.png" class="adorno-3">
+    <img src="tree.png" class="adorno-4">
 </div>
 
 <!-- Bienvenida -->
@@ -156,66 +157,44 @@
     <button onclick="startInvitation()">Ingresar</button>
 </div>
 
-<!-- CONTENIDO -->
+<!-- Contenido -->
 <div class="container" id="invitationContent">
 
-   <!-- SECCIÓN 1 -->
-<div class="zigzag-section">
-    <div class="zigzag-card">
-        <div style="text-align:center; margin-bottom:15px;">
-            <img src="logo.png" alt="Logo Truck González" style="width:120px; border-radius:10px; box-shadow:0px 4px 10px rgba(0,0,0,0.25);">
+    <!-- TARJETA 1 -->
+    <div class="zigzag-section">
+        <div class="zigzag-card">
+            <img src="logo.png" width="130" style="border-radius:15px; margin-bottom:15px;">
+            <h2>Truck González te invita</h2>
+            <p><strong>Celebración de Fin de Año</strong></p>
+            <p><strong>20 de Diciembre del 2025</strong></p>
+            <p>Misa de Acción de Gracias a las <strong>16:30 hrs</strong></p>
         </div>
-
-        <h2>Truck González te invita</h2>
-        <p><strong>Celebración de Fin de Año</strong></p>
-        <p><strong>20 de Diciembre del 2025</strong></p>
-        <p>Misa de Acción de Gracias a las <strong>16:30 hrs</strong></p>
     </div>
-</div>
 
+    <!-- TARJETA 2 - UBICACIÓN -->
+    <div class="zigzag-section">
+        <div class="zigzag-card">
+            <h2>⭐ Ubicación del Evento</h2>
 
-<!-- SECCIÓN 2 – UBICACIÓN -->
-<div class="zigzag-section zigzag-right">
+            <img src="terreno.png" class="zigzag-img">
 
-    <div class="zigzag-card" style="padding:20px; flex-wrap:wrap;">
-
-        <h2 style="color:#27656e; margin-bottom:20px; width:100%; text-align:center;">
-            ⭐ Ubicación del Evento
-        </h2>
-
-        <div style="display:flex; align-items:center; gap:25px; flex-wrap:wrap;">
-
-            <div class="ubicacion" style="flex:1; min-width:260px;">
-                <img src="terreno.png" 
-                alt="Lugar de la fiesta" 
-                class="ubicacion-img" 
-                style="width:100%; max-width:300px; border-radius:30px; box-shadow:0px 4px 10px rgba(0,0,0,0.25); object-fit:cover;">
-            </div>
-
-            <div style="flex:1; min-width:260px; text-align:right;">
-                <a href="https://maps.app.goo.gl/LKpmXthwqhiCzFbU7"
-                    target="_blank"
-                    class="button"
-                    style="margin-top:10px; display:inline-block; font-size:18px; padding:12px 20px; border-radius:20px; background:#27656e; color:white; text-decoration:none; box-shadow:0px 4px 10px rgba(0,0,0,0.15);">
-                    👉 Presiona aquí para ver la ubicación
-                </a>
-            </div>
-
+            <a href="https://maps.app.goo.gl/LKpmXthwqhiCzFbU7"
+               target="_blank"
+               style="display:inline-block; margin-top:15px; padding:12px 25px; background:#27656e; color:white; border-radius:20px; text-decoration:none;">
+               👉 Ver Ubicación
+            </a>
         </div>
-
     </div>
 
-</div>
-
-<!-- SECCIÓN 3 -->
-<div class="zigzag-section">
-    <div class="zigzag-card">
-        <h2>⭐ Mensaje de Agradecimiento</h2>
-        <p>Este año, cada entrega, cada viaje y cada meta alcanzada fueron posibles gracias a Dios y a ti.</p>
-        <p>En <strong>Truck González</strong>, valoramos profundamente tu confianza y dedicación.</p>
-        <p>Que esta Navidad esté llena de alegría, amor y descanso merecido.</p>
+    <!-- TARJETA 3 -->
+    <div class="zigzag-section">
+        <div class="zigzag-card">
+            <h2>⭐ Mensaje de Agradecimiento</h2>
+            <p>Este año, cada entrega y cada meta alcanzada fue posible gracias a Dios y a ti.</p>
+            <p>En <strong>Truck González</strong>, valoramos profundamente tu confianza.</p>
+            <p>Que esta Navidad esté llena de alegría, amor y descanso merecido.</p>
+        </div>
     </div>
-</div>
 
 </div>
 
@@ -225,20 +204,17 @@
 </audio>
 
 <script>
-    function startInvitation() {
-        document.getElementById('welcomeScreen').style.display = 'none';
-        document.getElementById('invitationContent').style.display = 'block';
-
-        var audio = document.getElementById('invitationAudio');
-        audio.play();
-    }
+function startInvitation() {
+    document.getElementById('welcomeScreen').style.display = 'none';
+    document.getElementById('invitationContent').style.display = 'block';
+    document.getElementById('invitationAudio').play();
+}
 </script>
 
-<!-- Adorno automático en cada tarjeta -->
+<!-- Adorno automático -->
 <script>
-window.onload = function () {
-    const decoracion = "klipartz.com (1).png"; // imagen decorativa
-
+window.onload = function() {
+    const decoracion = "klipartz.com (1).png";
     document.querySelectorAll('.zigzag-card').forEach(card => {
         let img = document.createElement("img");
         img.src = decoracion;
@@ -247,27 +223,6 @@ window.onload = function () {
     });
 };
 </script>
-
-<!-- Nieve 🎄 -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script>
-setInterval(() => {
-  confetti({
-    particleCount: 150,
-    angle: 90,
-    spread: 40,
-    origin: { x: Math.random(), y: 0 },
-    shapes: ["circle"],
-    gravity: 0.9,
-    scalar: 0.4,
-    colors: ["#ffffff"]
-  });
-}, 150);
-</script>
-
-<footer>
-    Invitación creada por Truck González para ti y tu familia.
-</footer>
 
 </body>
 </html>
